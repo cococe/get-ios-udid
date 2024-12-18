@@ -2,6 +2,7 @@
 获取iPhone设备udid
 ```
 npm install
+// 注意，在启动项目前，将udid.mobileconfig里的`http://127.0.0.1:9000/tools/udid`的域名，改成自己电脑的ip。
 node index.js
 ```
 iOS设备访问`xxxx:9000/config` 下载描述文件（`xxxx`是你电脑的ip）
