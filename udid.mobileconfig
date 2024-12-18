@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+ 
+<plist version="1.0">
+    <dict>
+        <key>PayloadContent</key>
+        <dict>
+            <key>URL</key>
+            <string>http://127.0.0.1:9000/tools/udid</string> <!--改成你服务最终的域名，iOS设备会向这个接口回调，将udid传过来-->
+            <key>DeviceAttributes</key>
+            <array>
+                <string>UDID</string>
+                <string>IMEI</string>
+                <string>ICCID</string>
+                <string>VERSION</string>
+                <string>PRODUCT</string>
+            </array>
+        </dict>
+        <key>PayloadOrganization</key>
+        <string>UDID 授权服务</string>
+        <key>PayloadDisplayName</key>
+        <string>安装 UDID 所需的描述文件</string>
+        <key>PayloadVersion</key>
+        <integer>1</integer>
+        <key>PayloadUUID</key>
+        <string>xxxxxasdfaf</string>
+        <key>PayloadIdentifier</key>
+        <string>com.yun-bangshou.profile-service</string>
+        <key>PayloadDescription</key>
+        <string>获取当前iOS设备的UDID号码</string>
+        <key>PayloadType</key>
+        <string>Profile Service</string>
+    </dict>
+</plist>
