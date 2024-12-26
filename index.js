@@ -40,22 +40,42 @@ router.get('/show', (ctx, next) => {
     ctx.set('content-type', 'text/html');
     ctx.body=`<html>
                 <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
                 <body>
-                    <div></div>
+                    <div></div><button>复制</button>
                 </body>
                 <script>
                     const udid = new URLSearchParams(location.search).get('udid');
                     document.querySelector('div').innerText = '您的udid为：' + udid;
+                    function copyText(text) {
+                        if (!text) {
+                            return false
+                        }
+                        const textarea = document.createElement('textarea')
+                        textarea.id = 'tempTarget'
+                        textarea.style.opacity = '0'
+                        textarea.style.width = '200px'
+                        textarea.style.position = 'absolute'
+                        textarea.style.left = '-1000px'
+                        textarea.innerText = text
+                        document.body.appendChild(textarea)
+                        // 赋值
+                        textarea.value = text
+                        // 选中
+                        textarea.select()
+                        // 复制
+                        document.execCommand('copy', true)
+                        // 移除输入框
+                        document.body.removeChild(textarea)
+                        return true
+                    }
+                    copyText(udid);
+                    document.querySelector('button').addEventListener('click', function() {
+                        copyText(udid);
+                        alert('复制成功')
+                    })
                 </script>
             </html>`;
-    next();
-})
-
-router.get('/config', (ctx, next) => {
-    const file = fs.readFileSync('./udid.mobileconfig') 
-    ctx.set('content-type', 'application/x-apple-aspen-config');
-    ctx.set('Content-disposition', `attachment;filename=udid.mobileconfig`);
-    ctx.body = file;
     next();
 })
 
